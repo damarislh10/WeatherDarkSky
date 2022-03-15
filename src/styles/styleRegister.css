@@ -1,0 +1,61 @@
+.imgLogo {
+    width: 200px;
+    padding: 50% 0;
+  }
+  
+  .icon-network {
+    width: 30px;
+  }
+  
+  .container-login {
+    background-color: #e6e6e6;
+    border-radius: 10px;
+    padding: 3%;
+    margin-bottom: 4%;
+  }
+  
+  .container-img {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .inputLogin {
+    padding: 3%;
+  }
+  
+  .btnIngreso {
+    background-color: rgb(225, 156, 43);
+    border: none;
+    padding: 2% 0;
+    border-radius: 3px;
+    color: #fff;
+  }
+  
+  .cuentaRegister {
+    text-align: center;
+  }
+  
+  .registerLink {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .registerLink:hover {
+    color: #000;
+  }
+  .facebook-btn,
+  .google-btn {
+    padding: 3% 0;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .google-btn {
+    background-color: #d32828;
+  }
+  
+  .facebook-btn {
+    background-color: #3d56b2;
+  }
+  
