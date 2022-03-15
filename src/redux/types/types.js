@@ -8,5 +8,4 @@ export const types = {
 export const typeWeather = {
   add: 'add',
   list: 'list',
-  search: 'search',
 }

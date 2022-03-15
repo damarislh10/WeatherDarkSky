@@ -5,10 +5,11 @@ import { useForm } from "../hooks/useForm";
 import { addWeather, listWeatherAsync } from "../redux/actions/actionWeather";
 import "../styles/styleClima.css";
 import DatoClima from "./DatoClima";
+import NavLogout from "./NavLogout";
 
 const Clima = () => {
   const dispatch = useDispatch();
-  const [dataInputs, setdataInputs] = useState();
+
   const [datosClima, setDatosClima] = useState({
     summary: "",
     temperature: "",
@@ -33,18 +34,18 @@ const Clima = () => {
 
   useEffect(() => {
     dispatch(listWeatherAsync());
+    dispatch(addWeather(listWeatherAsync()));
   }, []);
-
+  let climaCiudad;
   const handleClima = (e) => {
     e.preventDefault();
-    let climaCiudad = climas.find((n) => n.name === name);
-    setdataInputs(climaCiudad);
+    climaCiudad = climas.find((n) => n.name === name);
+
     const url = `https://api.darksky.net/forecast/88030114c5e47763a011a75e7a10c633/${climaCiudad.lat},${climaCiudad.lon}`;
     getData(url);
     getMetedereologicos(climaCiudad.lat, climaCiudad.lon);
   };
 
-  console.log(dataInputs);
   const getData = async (url) => {
     var proxy = "https://cors-anywhere.herokuapp.com/";
     const resp = await fetch(proxy + url);
@@ -73,39 +74,57 @@ const Clima = () => {
   return (
     <div>
       <Container className="w-80">
+        <NavLogout />
         <Form onSubmit={handleClima}>
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Control
               className="inputClima"
               name="name"
               type="text"
+              placeholder="Ingresa nombre de ciudad"
               value={name}
               onChange={handleInputChange}
               required
             />
           </Form.Group>
-          <button
-            className="btn-car w-100"
-            type="submit"
-            onClick={() => {
-              dispatch(addWeather(dataInputs));
-            }}
-          >
+          <button className="btn-car w-100" type="submit">
             Buscar
           </button>
         </Form>
 
         <div>
           <h2>{datosClima.summary}</h2>
-          <h2>{datosClima.temperature}</h2>
-          <h2>{datosClima.humidity}</h2>
-          <h2>{datosClima.dewPoint}</h2>
-          <h2>{datosClima.pressure}</h2>
-          <h2>{datosClima.uvIndex}</h2>
-          <h2>{datosClima.visibility}</h2>
-          <h2>{datosClima.windGust}</h2>
+          <h2>
+            <span>Feels Like: </span>
+            {datosClima.temperature}
+          </h2>
+          <h2>
+            <span>Humidity: </span>
+            {datosClima.humidity}
+          </h2>
+          <h2>
+            <span>Dew Pt: </span>
+            {datosClima.dewPoint}
+          </h2>
+          <h2>
+            <span>Pressure: </span>
+            {datosClima.pressure}
+          </h2>
+          <h2>
+            <span>UV Index: </span>
+            {datosClima.uvIndex}
+          </h2>
+          <h2>
+            <span>Visibility: </span>
+            {datosClima.visibility}
+          </h2>
+          <h2>
+            <span>Wind: </span>
+            {datosClima.windGust}
+          </h2>
           <h2>{datosClima.summaryHourly}</h2>
         </div>
+        <DatoClima />
 
         <div className="tableMinutes">
           <table className="table text-center mt-3">
@@ -229,8 +248,6 @@ const Clima = () => {
             </tbody>
           </table>
         </div>
-
-        <DatoClima />
       </Container>
     </div>
   );

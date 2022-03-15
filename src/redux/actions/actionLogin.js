@@ -4,6 +4,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { facebook, google } from "../../firebase/firebaseConfig";
 
@@ -60,5 +61,27 @@ export const loginSincrono = (id, displayname) => {
       id,
       displayname,
     },
+  };
+};
+
+// asincronica
+
+export const logoutAsync = () => {
+  return (dispatch) => {
+    const auth = getAuth();
+    signOut(auth)
+      .then((user) => {
+        dispatch(logoutSync());
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+// logout --------
+
+export const logoutSync = () => {
+  return {
+    type: types.logout,
   };
 };

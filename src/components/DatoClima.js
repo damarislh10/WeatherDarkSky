@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
@@ -7,7 +7,7 @@ const DatoClima = () => {
   console.log(climas);
   return (
     <div>
-      <h2 className="text-center"> Ciudades Consultadas</h2>
+      <h2 className="text-center"> Ciudades Disponibles</h2>
       <Table striped bordered hover>
         <thead>
           <tr>

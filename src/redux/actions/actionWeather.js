@@ -33,9 +33,10 @@ export const listSync = (climas) => {
   };
 };
 
+
 export const addWeather = (wheather) => {
   return {
-    type: typeWeather.add,
-    payload: wheather,
-  };
-};
+    type:typeWeather.add,
+    payload:wheather
+  }
+}
