@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../hooks/useForm";
-import { listWeatherAsync } from "../redux/actions/actionWeather";
+import { addWeather, listWeatherAsync } from "../redux/actions/actionWeather";
+import "../styles/styleClima.css";
+import DatoClima from "./DatoClima";
 
 const Clima = () => {
   const dispatch = useDispatch();
+  const [dataInputs, setdataInputs] = useState();
   const [datosClima, setDatosClima] = useState({
     summary: "",
     temperature: "",
@@ -19,6 +22,8 @@ const Clima = () => {
   });
   const [datoMetedeologico, setDatoMetedeologico] = useState([]);
   const [datosHourly, setDatoHourly] = useState([]);
+  const [datosDaily, setDatoDaily] = useState([]);
+
   const [values, handleInputChange] = useForm({
     name: "",
   });
@@ -32,14 +37,14 @@ const Clima = () => {
 
   const handleClima = (e) => {
     e.preventDefault();
-    console.log(name);
     let climaCiudad = climas.find((n) => n.name === name);
-    console.log(climaCiudad);
+    setdataInputs(climaCiudad);
     const url = `https://api.darksky.net/forecast/88030114c5e47763a011a75e7a10c633/${climaCiudad.lat},${climaCiudad.lon}`;
     getData(url);
     getMetedereologicos(climaCiudad.lat, climaCiudad.lon);
   };
 
+  console.log(dataInputs);
   const getData = async (url) => {
     var proxy = "https://cors-anywhere.herokuapp.com/";
     const resp = await fetch(proxy + url);
@@ -61,9 +66,9 @@ const Clima = () => {
     let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude={part}&appid=9ae67a9ffe88cb10092c754a81d5e192`;
     const resp = await fetch(url);
     const data = await resp.json();
-    console.log(data);
     setDatoMetedeologico(data.minutely);
     setDatoHourly(data.hourly);
+    setDatoDaily(data.daily);
   };
   return (
     <div>
@@ -79,6 +84,15 @@ const Clima = () => {
               required
             />
           </Form.Group>
+          <button
+            className="btn-car w-100"
+            type="submit"
+            onClick={() => {
+              dispatch(addWeather(dataInputs));
+            }}
+          >
+            Buscar
+          </button>
         </Form>
 
         <div>
@@ -120,7 +134,7 @@ const Clima = () => {
               <tr>
                 <th scope="col">Hourly</th>
                 <th scope="col">Dt</th>
-                <th scope="col">Temperatura</th>
+                <th scope="col">Temperature</th>
                 <th scope="col">Feels Like</th>
                 <th scope="col">Humidity</th>
                 <th scope="col">Weather</th>
@@ -139,8 +153,15 @@ const Clima = () => {
                     <ul>
                       {e.weather.map((w, i) => (
                         <div key={i}>
-                          <li>{w.main}</li>
-                          <li>{w.description}</li>
+                          <li>
+                            <span>Main: </span>
+                            {w.main}
+                          </li>
+                          <li>
+                            <span>Descripcion: </span>
+                            {w.description}
+                          </li>
+                          <span>Icon: </span>
                           <li>{w.icon}</li>
                         </div>
                       ))}
@@ -151,6 +172,65 @@ const Clima = () => {
             </tbody>
           </table>
         </div>
+
+        <div className="tableDailys">
+          <table className="table text-center mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Daily</th>
+                <th scope="col">Dt</th>
+                <th scope="col">Temperature</th>
+                <th scope="col">Weather</th>
+              </tr>
+            </thead>
+            <tbody>
+              {datosDaily.map((e, i) => (
+                <tr key={i}>
+                  <td>{i}</td>
+                  <td>{e.dt}</td>
+                  <td>
+                    <ul>
+                      <li>
+                        <span>Day: </span> {e.temp.day}
+                      </li>
+                      <li>
+                        <span>Night: </span> {e.temp.night}
+                      </li>
+                      <li>
+                        <span>Everning: </span> {e.temp.eve}
+                      </li>
+                      <li>
+                        <span>Morning: </span> {e.temp.morn}
+                      </li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      {e.weather.map((w, i) => (
+                        <div key={i}>
+                          <li>
+                            <span>Main: </span>
+                            {w.main}
+                          </li>
+                          <li>
+                            <span>Description: </span>
+                            {w.description}
+                          </li>
+                          <li>
+                            <span>Icon: </span>
+                            {w.icon}
+                          </li>
+                        </div>
+                      ))}
+                    </ul>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <DatoClima />
       </Container>
     </div>
   );

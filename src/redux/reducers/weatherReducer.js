@@ -8,7 +8,8 @@ export const weatherReducer = (state = initialState, action) => {
   switch (action.type) {
     case typeWeather.add:
       return {
-        climas: [action.payload],
+        ...state,
+        climas: [...state.climas,action.payload],
       };
     case typeWeather.list:
         return {

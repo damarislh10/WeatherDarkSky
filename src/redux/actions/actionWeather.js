@@ -32,3 +32,10 @@ export const listSync = (climas) => {
     payload: climas,
   };
 };
+
+export const addWeather = (wheather) => {
+  return {
+    type: typeWeather.add,
+    payload: wheather,
+  };
+};
