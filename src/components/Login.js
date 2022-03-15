@@ -3,7 +3,11 @@ import { Container, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
-import { loginEmailPassword, loginGoogle } from "../redux/actions/actionLogin";
+import {
+  loginEmailPassword,
+  loginFacebook,
+  loginGoogle,
+} from "../redux/actions/actionLogin";
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -24,10 +28,14 @@ export const Login = () => {
     dispatch(loginGoogle());
   };
 
+  const handleFacebook = () => {
+    dispatch(loginFacebook());
+  };
+
   return (
     <div className="mt-5">
       <Container className="w-50 container-login shadow rounded">
-      <h2 className="text-center fs-3">Accede a Dark Sky</h2>
+        <h2 className="text-center fs-3">Accede a Dark Sky</h2>
         <Form onSubmit={handleLogin}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
@@ -74,7 +82,7 @@ export const Login = () => {
               </Container>
             </Container>
             <Container className="auth__social-networks text-light">
-              <Container className="facebook-btn">
+              <Container className="facebook-btn" onClick={handleFacebook}>
                 <Container className="facebook-icon-wrapper">
                   <img
                     className="facebook-icon icon-network"

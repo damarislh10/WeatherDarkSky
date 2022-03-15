@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { loginReducer } from "../reducers/loginReducer";
 import { registerReducer } from "../reducers/registerReducer";
+import { weatherReducer } from "../reducers/weatherReducer";
 
 const composeEnhancers =
   (typeof window !== "undefined" &&
@@ -11,6 +12,7 @@ const composeEnhancers =
 const reducers = combineReducers({
   login: loginReducer,
   register: registerReducer,
+  climas: weatherReducer,
 });
 
 export const store = createStore(

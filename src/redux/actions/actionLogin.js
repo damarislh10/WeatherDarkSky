@@ -5,7 +5,21 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import { google } from "../../firebase/firebaseConfig";
+import { facebook, google } from "../../firebase/firebaseConfig";
+
+export const loginFacebook = () => {
+  return (dispatch) => {
+    const auth = getAuth();
+    signInWithPopup(auth, facebook)
+      .then(({ user }) => {
+        dispatch(loginSincrono(user.uid, user.displayName));
+        console.log(`Bienvenid@ ${user.displayName}`);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+};
 
 export const loginGoogle = () => {
   return (dispatch) => {
