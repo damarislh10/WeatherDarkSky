@@ -16,7 +16,6 @@ const ListNotas = () => {
 
   const editar = (id) => {
     const editNote = notes.find((n) => n.id === id);
-    console.log(editNote);
     setEnviarDatos(editNote);
   };
 
