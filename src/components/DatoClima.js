@@ -7,7 +7,7 @@ const DatoClima = () => {
   console.log(climas);
   return (
     <div>
-      <h2 className="text-center"> Ciudades Disponibles</h2>
+      <h2 className="text-center mt-4 mb-4 fs-4"> Ciudades Disponibles</h2>
       <Table striped bordered hover>
         <thead>
           <tr>

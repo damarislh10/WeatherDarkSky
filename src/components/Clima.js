@@ -105,47 +105,53 @@ const Clima = () => {
           <div className="container-whet">
             <h2>
               <span>Wind: </span>
-              {datosClima.windGust}
+              <span className="result-city">{datosClima.windGust} mph</span>
             </h2>
             <h2>
               <span>Humidity: </span>
-              {datosClima.humidity} %
+              <span className="result-city">{datosClima.humidity} %</span>
             </h2>
             <h2>
               <span>Dew Pt: </span>
-              {datosClima.dewPoint}
+              <span className="result-city">{datosClima.dewPoint}˚</span>
             </h2>
             <h2>
               <span>UV Index: </span>
-              {datosClima.uvIndex}
+              <span className="result-city">{datosClima.uvIndex}</span>
             </h2>
             <h2>
               <span>Visibility: </span>
-              {datosClima.visibility}
+              <span className="result-city">{datosClima.visibility} mi</span>
             </h2>
             <h2>
               <span>Pressure: </span>
-              {datosClima.pressure}
+              <span className="result-city">{datosClima.pressure} mb</span>
             </h2>
           </div>
 
-          <h2>{datosClima.summary}</h2>
-          <h2>
-            <span>Feels Like: </span>
-            {datosClima.temperature}
-          </h2>
+          <div className="container-clima-2 my-4">
+            <div className="d-flex tempWeather">
+              <h3>{datosClima.temperature} ˚</h3>
+              <h3 className="ms-2">{datosClima.summary}</h3>
+            </div>
+            <h2>
+              <span>Feels Like: </span>
+              <span className="result-city">{datosClima.temperature}˚ </span>
+            </h2>
 
-          <h2>{datosClima.summaryHourly}</h2>
+            <h2 className="summaryHourly">{datosClima.summaryHourly}</h2>
+          </div>
         </div>
+        <hr/>
         <DatoClima />
 
         <div className="tableMinutes">
           <table className="table text-center mt-3">
             <thead>
               <tr>
-                <th scope="col">Minute</th>
+                <th scope="col">Minutely</th>
                 <th scope="col">Dt</th>
-                <th scope="col">precipitation</th>
+                <th scope="col">Precipitation</th>
               </tr>
             </thead>
             <tbody>

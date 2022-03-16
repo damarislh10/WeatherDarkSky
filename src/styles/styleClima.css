@@ -4,15 +4,23 @@ body {
 .inputClima {
   padding: 1% 3%;
   border-radius: 100px;
+  text-align: center;
 }
 
 ul {
   list-style-type: none;
 }
 
+span{
+  font-weight: bold;
+}
+
 .container-whet {
   display: flex;
   justify-content: space-around;
+  padding: 10px;
+  background-color: rgba(238, 238, 238, 0.35);
+  align-items: center;
 }
 
 .container-form {
@@ -36,4 +44,25 @@ h2 {
   background-color: rgba(0, 0, 0, 0.06);
   border: none;
   border-radius: 10px;
+}
+
+.result-city {
+  font-weight: 100;
+}
+
+.container-clima-2 {
+  text-align: center;
+}
+
+.tempWeather {
+  justify-content: center;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+.summaryHourly {
+  font-size: 30px;
+  font-weight: 100;
 }
