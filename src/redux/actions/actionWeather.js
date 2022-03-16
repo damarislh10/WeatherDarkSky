@@ -1,14 +1,5 @@
 import { typeWeather } from "../types/types";
-import {
-  addDoc,
-  collection,
-  getDocs,
-  updateDoc,
-  query,
-  where,
-  doc,
-  deleteDoc,
-} from "@firebase/firestore";
+import { collection, getDocs } from "@firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 
 export const listWeatherAsync = () => {
@@ -33,10 +24,9 @@ export const listSync = (climas) => {
   };
 };
 
-
 export const addWeather = (wheather) => {
   return {
-    type:typeWeather.add,
-    payload:wheather
-  }
-}
+    type: typeWeather.add,
+    payload: wheather,
+  };
+};

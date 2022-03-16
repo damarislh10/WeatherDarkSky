@@ -67,7 +67,8 @@ const Clima = () => {
     let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude={part}&appid=9ae67a9ffe88cb10092c754a81d5e192`;
     const resp = await fetch(url);
     const data = await resp.json();
-    setDatoMetedeologico(data.minutely);
+    console.log(data.minutely)
+    // setDatoMetedeologico(data.minutely);
     setDatoHourly(data.hourly);
     setDatoDaily(data.daily);
   };
@@ -142,10 +143,10 @@ const Clima = () => {
             <h2 className="summaryHourly">{datosClima.summaryHourly}</h2>
           </div>
         </div>
-        <hr/>
+        <hr />
         <DatoClima />
 
-        <div className="tableMinutes">
+        {/* <div className="tableMinutes">
           <table className="table text-center mt-3">
             <thead>
               <tr>
@@ -161,10 +162,10 @@ const Clima = () => {
                   <td>{e.dt}</td>
                   <td>{e.precipitation}</td>
                 </tr>
-              ))}
+              ))} 
             </tbody>
           </table>
-        </div>
+        </div> */}
 
         <div className="tableHours">
           <table className="table text-center mt-3">

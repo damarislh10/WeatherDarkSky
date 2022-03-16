@@ -1,6 +1,7 @@
 import {
   addDoc,
   collection,
+  updateDoc,
   deleteDoc,
   doc,
   getDocs,
@@ -8,6 +9,19 @@ import {
 import { db } from "../../firebase/firebaseConfig";
 import { typeNotes } from "../types/types";
 
+export const editsync = (id, contentAll) => {
+  return async (dispatch) => {
+    updateDoc(doc(db, "notas", id), contentAll);
+    dispatch(editSyn(contentAll));
+    dispatch(listNotesAsync());
+  };
+};
+export const editSyn = (contentAll) => {
+  return {
+    type: typeNotes.edit,
+    payload: contentAll,
+  };
+};
 export const deleteNote = (id) => {
   return async (dispatch) => {
     deleteDoc(doc(db, "notas", id));

@@ -1,14 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteNote, listNotesAsync } from "../redux/actions/actionNotes";
+import AddNota from "./AddNota";
 
 const ListNotas = () => {
+  const [enviarDatos, setEnviarDatos] = useState([]);
   const { notes } = useSelector((store) => store.notas);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(listNotesAsync());
   });
+
+  const editar = (id) => {
+    const editNote = notes.find((n) => n.id === id);
+    console.log(editNote);
+    setEnviarDatos(editNote);
+  };
 
   return (
     <div>
@@ -29,6 +37,16 @@ const ListNotas = () => {
               <td>
                 <input
                   onClick={() => {
+                    editar(e.id);
+                  }}
+                  value="Editar"
+                  type="button"
+                  className="btn btn-outline-dark"
+                />
+              </td>
+              <td>
+                <input
+                  onClick={() => {
                     dispatch(deleteNote(e.id));
                   }}
                   value="Delete"
@@ -40,6 +58,7 @@ const ListNotas = () => {
           ))}
         </tbody>
       </table>
+      {/* <AddNota datosEdit={enviarDatos} /> */}
     </div>
   );
 };
