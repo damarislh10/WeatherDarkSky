@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteNote, listNotesAsync } from "../redux/actions/actionNotes";
-import AddNota from "./AddNota";
+import Editar from "./Editar";
 
 const ListNotas = () => {
   const [enviarDatos, setEnviarDatos] = useState([]);
+  const [formAct, setformAct] = useState(false);
+
   const { notes } = useSelector((store) => store.notas);
   const dispatch = useDispatch();
 
@@ -38,6 +40,7 @@ const ListNotas = () => {
                 <input
                   onClick={() => {
                     editar(e.id);
+                    setformAct(true);
                   }}
                   value="Editar"
                   type="button"
@@ -58,7 +61,7 @@ const ListNotas = () => {
           ))}
         </tbody>
       </table>
-      {/* <AddNota datosEdit={enviarDatos} /> */}
+      {formAct === true ? <Editar datoAct={enviarDatos} /> : ""}
     </div>
   );
 };

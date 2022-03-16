@@ -6,7 +6,7 @@ import { registerNoteAsync } from "../redux/actions/actionNotes";
 import "../styles/styleNote.css";
 import ListNotas from "./ListNotas";
 
-const AddNota = ({ datosEdit }) => {
+const AddNota = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {

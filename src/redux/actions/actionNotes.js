@@ -9,7 +9,7 @@ import {
 import { db } from "../../firebase/firebaseConfig";
 import { typeNotes } from "../types/types";
 
-export const editsync = (id, contentAll) => {
+export const editAsync = (id, contentAll) => {
   return async (dispatch) => {
     updateDoc(doc(db, "notas", id), contentAll);
     dispatch(editSyn(contentAll));
