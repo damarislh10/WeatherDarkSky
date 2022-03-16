@@ -5,10 +5,10 @@ export const loginReducer = (state = {}, action) => {
     case types.login:
       return {
         id: action.payload.id,
-        name: action.payload.displayName,
+        displayName: action.payload.displayName,
       };
     case types.logout:
-      return {};
+      return {}
     default:
       return state;
   }
