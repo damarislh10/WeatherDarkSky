@@ -21,7 +21,6 @@ const Clima = () => {
     pressure: "",
     summaryHourly: "",
   });
-  const [datoMetedeologico, setDatoMetedeologico] = useState([]);
   const [datosHourly, setDatoHourly] = useState([]);
   const [datosDaily, setDatoDaily] = useState([]);
 
@@ -67,8 +66,7 @@ const Clima = () => {
     let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude={part}&appid=9ae67a9ffe88cb10092c754a81d5e192`;
     const resp = await fetch(url);
     const data = await resp.json();
-    console.log(data.minutely)
-    // setDatoMetedeologico(data.minutely);
+
     setDatoHourly(data.hourly);
     setDatoDaily(data.daily);
   };
@@ -145,27 +143,6 @@ const Clima = () => {
         </div>
         <hr />
         <DatoClima />
-
-        {/* <div className="tableMinutes">
-          <table className="table text-center mt-3">
-            <thead>
-              <tr>
-                <th scope="col">Minutely</th>
-                <th scope="col">Dt</th>
-                <th scope="col">Precipitation</th>
-              </tr>
-            </thead>
-            <tbody>
-              {datoMetedeologico.map((e, i) => (
-                <tr key={i}>
-                  <td>{i}</td>
-                  <td>{e.dt}</td>
-                  <td>{e.precipitation}</td>
-                </tr>
-              ))} 
-            </tbody>
-          </table>
-        </div> */}
 
         <div className="tableHours">
           <table className="table text-center mt-3">

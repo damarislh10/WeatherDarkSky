@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 const DatoClima = () => {
   const { climas } = useSelector((state) => state.climas);
-  console.log(climas);
   return (
     <div>
       <h2 className="text-center mt-4 mb-4 fs-4"> Ciudades Disponibles</h2>
