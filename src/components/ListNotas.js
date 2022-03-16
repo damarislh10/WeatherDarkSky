@@ -6,7 +6,6 @@ const ListNotas = () => {
   const { notes } = useSelector((store) => store.notas);
   const dispatch = useDispatch();
 
-  console.log(notes);
   useEffect(() => {
     dispatch(listNotesAsync());
   });
@@ -18,7 +17,7 @@ const ListNotas = () => {
           <tr>
             <th scope="col">Nombre</th>
             <th scope="col">Fecha</th>
-            <th scope="col">Descripcion</th>
+            <th scope="col">Descripción</th>
           </tr>
         </thead>
         <tbody>
