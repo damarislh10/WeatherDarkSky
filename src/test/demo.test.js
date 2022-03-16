@@ -1,3 +1,4 @@
+import { getLongitud } from "../base/async_await";
 import { metedereologico } from "../base/data/dataMetedereologicos";
 import { isLoggedIn, notLoggedIn } from "../base/logueado";
 import { timeZones } from "../base/metedereologicoZone";
@@ -27,5 +28,12 @@ describe("Validando Logueado", () => {
     const zona = timeZones(zone);
     const filtrado = metedereologico.find((m) => m.timezone === zone);
     expect(zona).toEqual(filtrado);
+  });
+
+  test("Validar Longitud", async () => {
+    const lon = await getLongitud();
+    console.log(lon);
+
+    expect(typeof lon).toBe("number");
   });
 });
