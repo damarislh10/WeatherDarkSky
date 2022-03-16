@@ -5,6 +5,7 @@ import {
   obtenerStateStorage,
 } from "../../components/LocalStorage";
 import { loginReducer } from "../reducers/loginReducer";
+import { notesReducer } from "../reducers/notesReducer";
 import { registerReducer } from "../reducers/registerReducer";
 import { weatherReducer } from "../reducers/weatherReducer";
 
@@ -17,6 +18,7 @@ const reducers = combineReducers({
   login: loginReducer,
   register: registerReducer,
   climas: weatherReducer,
+  notas: notesReducer,
 });
 
 const storeState = obtenerStateStorage();

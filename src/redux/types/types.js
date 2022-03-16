@@ -4,8 +4,14 @@ export const types = {
   register: "[AUTH] register",
 };
 
-
 export const typeWeather = {
-  add: 'add',
-  list: 'list',
-}
+  add: "add",
+  list: "list",
+};
+
+export const typeNotes = {
+  add: "[NOTE] add",
+  list: "[NOTE] list",
+  delete: "[NOTE] delete",
+  edit: "[NOTE] edit",
+};
