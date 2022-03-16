@@ -22,6 +22,19 @@ const NavLogout = () => {
           alt="imgSalir"
         />
       </button>
+      <button
+        className="btnLogout ms-3 "
+        onClick={() => {
+          navigate("/note");
+        }}
+      >
+        Crear Nota
+        <img
+          className="imgsalir ms-2"
+          src="https://res.cloudinary.com/df90q7vvj/image/upload/v1647395188/icons8-nota-32_ls9jdh.png"
+          alt="imgNote"
+        />
+      </button>
     </div>
   );
 };
