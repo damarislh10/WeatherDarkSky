@@ -13,6 +13,6 @@ You'll need Node.js and Gulp on your local development machine.
 ### Up and running
 1. Run $ npm start
 2. Visit http://localhost:3000
-Enjoy :)
+3. Enjoy :)
 
 
