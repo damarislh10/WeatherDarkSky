@@ -2,9 +2,16 @@
 
 Dark Sky app Shows weather conditions for a city available also shows your current weather, hour-by-hour weather conditions for the next two days and weather conditions day by day for the next week and a section if you want to create important notes and you can list, edit and delete.
 
+# Servidor temporal
+
+Antes de dar clic al link del despliegue por favor aceptar el servidor temporal
+
+[Link Servidor](https://cors-anywhere.herokuapp.com/corsdemo)
+
 # Despliegue
 
 [Link despliegue](https://darksky-23f32.web.app/)
+
 
 ### Set up
 You'll need Node.js and Gulp on your local development machine.
